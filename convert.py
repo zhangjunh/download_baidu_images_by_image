@@ -3,7 +3,7 @@ from PIL import Image
 import logging
 import sys
 
-def convert(allpath):
+def converts(allpath):
 
     def logger():
         """ 获取logger"""
@@ -51,4 +51,4 @@ def convert(allpath):
 
 
 if __name__ == '__main__':
-    convert(os.getcwd())
+    converts(os.getcwd())

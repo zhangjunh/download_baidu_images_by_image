@@ -67,4 +67,4 @@ def delrepetitions(allpath):
 
 
 if __name__ == '__main__':
-    delrepetition(os.getcwd())
+    delrepetitions(os.getcwd())

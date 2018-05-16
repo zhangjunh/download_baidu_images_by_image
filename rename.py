@@ -14,4 +14,4 @@ def renames(allpath):
 
 
 if __name__ == '__main__':
-    rename(os.getcwd())
+    renames(os.getcwd())

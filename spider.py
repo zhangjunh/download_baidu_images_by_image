@@ -26,7 +26,7 @@ def save_img(img_url,file_name,file_path):
     except Exception as e:
         print ('错误 ：',e)
 
-def spider(allpath):
+def spiders(allpath):
 
     path = os.path.join(allpath, "additive").replace('\\','/')
 
@@ -81,4 +81,4 @@ def spider(allpath):
 
 
 if __name__ == '__main__':
-    spider(os.getcwd())
+    spiders(os.getcwd())

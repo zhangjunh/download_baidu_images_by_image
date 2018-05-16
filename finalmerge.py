@@ -27,4 +27,4 @@ def finalmerges(allpath, inpath):
 
 
 if __name__ == '__main__':
-    finalmerge(os.getcwd(), "D:/trains")
+    finalmerges(os.getcwd(), "D:/trains")
