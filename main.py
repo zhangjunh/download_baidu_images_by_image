@@ -1,5 +1,4 @@
 from spider import spider
-from merge import merge
 from finalmerge import finalmerges
 import os
 from delrepetition import delrepetitions
@@ -19,8 +18,8 @@ while retry:
         retry = 1
         print("START AGAIN")
 
-merge(allpath)
-print("Merged.")
+
+print("Download completed.")
 finalmerges(allpath, database)
 print("First finalmerged.")
 delrepetitions(allpath)

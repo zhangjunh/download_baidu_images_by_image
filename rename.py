@@ -10,7 +10,7 @@ def renames(allpath):
                 os.chdir(allpath)
                 name = each.split('_')[-1]
                 os.rename(each, name)
-                print ("Renamed:", each)
+                print ("renamed:", each)
 
 
 if __name__ == '__main__':
