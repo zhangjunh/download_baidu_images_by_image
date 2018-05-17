@@ -12,7 +12,7 @@ def save_img(img_url,file_name,file_path):
 
     try:
         if not os.path.exists(file_path):
-            print ('创建文件夹',file_path)
+            print ('create dirs:',file_path)
 
             os.makedirs(file_path)
 
@@ -22,9 +22,9 @@ def save_img(img_url,file_name,file_path):
 
         urllib.request.urlretrieve(img_url,filename=filename)
     except IOError as e:
-        print ('文件操作失败',e)
+        print ('file operation failed:',e)
     except Exception as e:
-        print ('错误 ：',e)
+        print ('failed：',e)
 
 def spiders(allpath):
 
@@ -37,12 +37,10 @@ def spiders(allpath):
             imagepath = os.path.join(root, each).replace('\\','/')
             print(imagepath)
 
-            # 定义统一的headers
             headers = {
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36",
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36",
             }
 
-            # 图片上传
             url = "http://image.baidu.com/pcdutu/a_upload?fr=html5&target=pcSearchImage&needJson=true"
             fileopen = open(imagepath, "rb")
             files = {
@@ -61,7 +59,6 @@ def spiders(allpath):
 
             temp_data = json.loads(requests.post(url=url, headers=headers, files=files).text)
 
-            # 获得图像识别结果
             ans_url = "http://image.baidu.com/pcdutu?queryImageUrl=" + str(temp_data['url']) + "&querySign" + temp_data[
                 "querySign"] + "&fm=home&uptype=upload_pc&result=result_camera"
             page_source = requests.get(url=ans_url, headers=headers).text
@@ -71,13 +68,13 @@ def spiders(allpath):
             for u in multi_data:
                 index += 1
                 save_img(u, 'add_' + str(index) + '_', os.path.join(allpath, "result_" + root.split('\\')[-1]))
-                print(index, "pictures" if index > 1 else "picture", "Saved.")
+                print(index, "pictures" if index > 1 else "picture", "saved.")
             fileopen.close()
             os.remove(imagepath)
-            print("Delete imgae:", imagepath)
+            print("delete imgae:", imagepath)
             if not os.listdir(root):
                 os.rmdir(root)
-                print("Delete empty dir:", root.replace('\\','/'))
+                print("delete empty dir:", root.replace('\\','/'))
 
 
 if __name__ == '__main__':
