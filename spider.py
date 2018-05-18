@@ -6,6 +6,7 @@ import urllib
 import urllib.request
 import time
 import subprocess
+import socket
 
 
 def save_img(img_url,file_name,file_path):
@@ -20,7 +21,23 @@ def save_img(img_url,file_name,file_path):
 
         filename = '{}{}{}{}{}'.format(file_path,os.sep,file_name, int(round(time.time()*1000)), file_suffix)
 
-        urllib.request.urlretrieve(img_url,filename=filename)
+        socket.setdefaulttimeout(10)
+
+        try:
+            urllib.request.urlretrieve(img_url,filename=filename)
+        except socket.timeout:
+            count = 1
+            while count <= 5:
+                try:
+                    urllib.request.urlretrieve(img_url,filename=filename)
+                    break
+                except socket.timeout:
+                    err_info = 'reloading for %d time' % count if count == 1 else 'reloading for %d times' % count
+                    print(err_info)
+                    count += 1
+            if count > 5:
+                print("downloading picture failed")
+
     except IOError as e:
         print ('file operation failed:',e)
     except Exception as e:

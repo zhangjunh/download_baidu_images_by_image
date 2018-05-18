@@ -12,6 +12,7 @@
 - urllib
 - hashlib
 - PIL
+- socket
 
 ## How to use
 
