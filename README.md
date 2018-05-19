@@ -5,7 +5,7 @@
 - Search by baidu.com
 
 ## Requirements
-- python 3+
+- python 3.x
 - requests
 - json
 - re
