@@ -1,4 +1,3 @@
-#-*- coding: utf-8 -*-
 import os
 import hashlib
 import logging
@@ -62,7 +61,6 @@ def delrepetitions(allpath):
                     log.info("repeated：%s"%a)
                 else:
                     md5List.append(md5)
-                    # print(md5List)
                     print("operated", len(md5List), "pictures" if len(md5List) > 1 else "picture", "altogether.")
 
 
