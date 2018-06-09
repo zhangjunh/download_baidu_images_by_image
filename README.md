@@ -21,7 +21,7 @@ to same label in a dir named with a number. Copy dirs into a dir named
 "additive", such as:
       - additive >> 99 >> 10110.jpeg...
 
-2. Copy original dataset to dir named "train".Such as:
+2. Copy original dataset to dir named "train", such as:
       - train >> 99 >> 10110.jpeg...
       - If the label number not exist in "train", pictures will be deleted after
       download.
